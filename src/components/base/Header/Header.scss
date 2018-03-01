@@ -1,0 +1,16 @@
+.header-wrapper {
+  background: #a0a0a0;
+  height: 5rem;
+  color: white;
+  font-size: 2rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  .sidebar-icon {
+    padding: 1.5rem;
+  }
+  span {
+    margin: 0;
+    padding: 0;
+  }
+}
