@@ -2,15 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import type { State } from 'store';
 import { HomeActions } from 'store/actionCreators';
-import Viewer from 'components/home/Viewer';
+import ViewerTemplate from 'components/home/ViewerTemplate';
 import Spinner from 'components/common/Spinner';
+import LikeButtonContainer from 'containers/home/LikeButtonContainer';
 
 type Props = {
   isLoaded: boolean,
   apod: any
 }
 
-class ViewerContainer extends Component<Props> {
+class ViewerTemplateContainer extends Component<Props> {
   componentDidMount() {
     this.getFirstAPOD();
   }
@@ -34,12 +35,15 @@ class ViewerContainer extends Component<Props> {
       );
     }
 
+    const likeButton = <LikeButtonContainer />;
+
     return (
-      <Viewer
+      <ViewerTemplate
         date={apod.date}
         mediaType={apod.mediaType}
         title={apod.title}
         url={apod.url}
+        likeButton={likeButton}
       />
     );
   }
@@ -51,4 +55,4 @@ export default connect(
     apod: home.apod.toJS()
   }),
   () => ({})
-)(ViewerContainer);
+)(ViewerTemplateContainer);
