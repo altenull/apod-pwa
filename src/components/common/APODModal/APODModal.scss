@@ -1,0 +1,55 @@
+.apod-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 70;
+  .apod-dimmer {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 71;
+    background: rgba(0, 0, 0, 0.8);
+  }
+  .apod-template {
+    width: 90%;
+    height: 70%;
+    display: flex;
+    z-index: 72;
+    img {
+      height: auto;
+      width: 40vw;
+      box-shadow: 0 10px 20px rgba(255, 255, 255, 0.19), 0 6px 6px rgba(255, 255, 255, 0.23);
+    }
+    .apod-info {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      margin-left: 1.8rem;
+      .apod-header {
+        display: flex;
+        flex-direction: column;
+        border-left: 5px solid red;
+        margin-bottom: 1.2rem;
+        padding: .6rem 0 .2rem .7rem;
+        .title {
+          color: #f1f3f5;
+          font-size: 1.8rem;
+          font-weight: 700;
+          margin-bottom: .5rem;
+        }
+        .date {
+          color: #868e96;
+          font-size: 1rem;
+        }
+      }
+      p {
+        color: #dee2e6;
+        font-size: 1.2rem;
+        line-height: 2rem;
+      }
+    }
+  }
+}
