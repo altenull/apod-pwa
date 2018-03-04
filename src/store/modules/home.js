@@ -7,21 +7,28 @@ import * as API from 'lib/api';
 const INITIALIZE_HOME = 'home/INITIALIZE_HOME';
 const GET_APOD = 'home/GET_APOD';
 const SET_TODAY = 'home/SET_TODAY';
+const SHOW_CALENDAR = 'home/SHOW_CALENDAR';
+const HIDE_CALENDAR = 'home/HIDE_CALENDAR';
 
 export type HomeActionCreators = {
   initializeHome(): any,
   getAPOD(date: string): any,
-  setToday(date: string): any
+  setToday(date: string): any,
+  showCalendar(): any,
+  hideCalendar(): any
 };
 
 export const actionCreators = {
   initializeHome: createAction(INITIALIZE_HOME),
   getAPOD: createAction(GET_APOD, API.getAPOD),
-  setToday: createAction(SET_TODAY)
+  setToday: createAction(SET_TODAY),
+  showCalendar: createAction(SHOW_CALENDAR),
+  hideCalendar: createAction(HIDE_CALENDAR)
 };
 
 type APOD = {
   date: string,
+  explanation: string,
   mediaType: string,
   title: string,
   url: string
@@ -30,11 +37,13 @@ type APOD = {
 export type Home = {
   isLoaded: boolean,
   today: string,
-  apod: APOD
+  apod: APOD,
+  calendar: boolean
 };
 
 const APODSubrecord = Record({
   date: '',
+  explanation: '',
   mediaType: '',
   title: '',
   url: ''
@@ -43,7 +52,8 @@ const APODSubrecord = Record({
 const HomeRecord = Record({
   isLoaded: false,
   today: '',
-  apod: APODSubrecord()
+  apod: APODSubrecord(),
+  calendar: false
 });
 
 const initialState: Map<string, *> = HomeRecord();
@@ -54,9 +64,10 @@ export default handleActions({
     type: GET_APOD,
     onPending: state => state.set('isLoaded', false),
     onSuccess: (state, { payload: response }) => {
-      const { date, media_type, title, url } = response.data;
+      const { date, explanation, media_type, title, url } = response.data;
       const apod = {
         'date': date,
+        'explanation': explanation,
         'mediaType': media_type,
         'title': title,
         'url': url
@@ -64,5 +75,7 @@ export default handleActions({
       return state.set('apod', fromJS(apod)).set('isLoaded', true);
     },
   }),
-  [SET_TODAY]: (state, { payload: date }) => state.set('today', date)
+  [SET_TODAY]: (state, { payload: date }) => state.set('today', date),
+  [SHOW_CALENDAR]: state => state.set('calendar', true),
+  [HIDE_CALENDAR]: state => state.set('calendar', false)
 }, initialState);
