@@ -12,30 +12,31 @@ type Props = {
 }
 
 class LikeButtonContainer extends Component<Props> {
-  handleRate = () => {
+  handleLike = async () => {
     const { apod, apodList } = this.props;
     const isPressed = apodList.toJS().find(c => c.date === apod.date);
-    
-    if (isPressed) {
-      console.log('should be removed in IndexedDB and Store');
-    } else {
-      IndexedDB.saveAPOD(apod);
 
+    if (isPressed) {
+      const removeIndex = apodList.toJS().findIndex(c => c.date === apod.date);
+
+      IndexedDB.removeAPOD(apod.date);
+      GalleryActions.removeAPOD(removeIndex);
+    } else {
+      IndexedDB.addAPOD(apod);
       const newAPOD = [{
         date: apod.date,
+        explanation: apod.explanation,
         mediaType: apod.mediaType,
         title: apod.title,
         url: apod.url
       }];
-
       GalleryActions.addAPOD(newAPOD);
     }
   }
 
   render() {
-    console.log('LikeButtonContainer 랜더링');
     const { apod, apodList } = this.props;
-    const { handleRate } = this;
+    const { handleLike } = this;
 
     if (!apodList) {
       return null;
@@ -45,7 +46,7 @@ class LikeButtonContainer extends Component<Props> {
 
     return (
       <LikeButton
-        onRate={handleRate}
+        onLike={handleLike}
         isPressed={isPressed}
       />
     );
