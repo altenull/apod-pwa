@@ -1,10 +1,46 @@
+@import 'utils';
+
 .drawer-wrapper {
-  height: calc(100vh - 5rem);
   .sidebar {
-    .icons {
-      font-size: 1rem;
-      margin: 0;
-      padding: 0;
+    z-index: 60;
+    .logo {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 3.5rem;
+      img {
+        height: 120px;
+        user-select: none;
+      }
+    }
+    .title {
+      user-select: none;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: lighten($planet, 10%);
+      text-align: right;
+      margin: -1.5rem .7rem 0 0;
+    }
+    .menu-button {
+      display: flex;
+      color: $menu-button;
+      padding: 1.2rem 0 1rem 1.5rem;
+      i {
+        font-size: 1.8rem;
+        margin-right: 1.5rem;
+      }
+      span {
+        font-size: 1rem;
+        font-weight: 700;
+      }
+      &:hover {
+        background: darken($menu-button, 20%);
+        i {
+          color: darken($menu-button, 80%);
+        }
+        span {
+          color: darken($menu-button, 80%);
+        }
+      }
     }
   }
 }

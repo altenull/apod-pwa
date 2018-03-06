@@ -1,38 +1,45 @@
-import React, { type Node } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Drawer.scss';
 import classNames from 'classnames/bind';
-import { Sidebar, Menu, Icon } from 'semantic-ui-react'
+import { Sidebar, Menu } from 'semantic-ui-react'
 
 const cx = classNames.bind(styles);
 
 type Props = {
-  contents: Node,
   visible: boolean
 }
 
-const Drawer = ({contents, visible}: Props) => {
+const Drawer = ({visible}: Props) => {
   return (
     <div className={cx('drawer-wrapper')}>
-      <Sidebar.Pushable className={cx('sidebar')} >
-        <Sidebar as={Menu} animation='overlay' width='thin' visible={visible} icon='labeled' vertical inverted>
-          <Link to='/'>
-            <Menu.Item name='home' className={cx('icons')}>
-              <Icon name='home' />
-              Home
-            </Menu.Item>
-          </Link>
-          <Link to='/gallery'>
-            <Menu.Item name='picture' className={cx('icons')}>
-              <Icon name='picture' />
-              My gallery
-            </Menu.Item>
-          </Link>
-        </Sidebar>
-        <Sidebar.Pusher>
-          {contents}
-        </Sidebar.Pusher>
-      </Sidebar.Pushable>
+      <Sidebar
+        className={cx('sidebar')}
+        as={Menu}
+        animation='overlay'
+        size='large'
+        visible={visible}
+        icon='labeled'
+        vertical
+        inverted
+      >
+        <div className={cx('logo')}>
+          <img src={require('static/images/planet.svg')} alt='planet' />
+          <span className={cx('title')}>APOD</span>
+        </div>
+        <Link to='/'>
+          <div className={cx('menu-button')}>
+            <i className={cx('icon', 'home')} />
+            <span>Home</span>
+          </div>
+        </Link>
+        <Link to='/gallery'>
+          <div className={cx('menu-button')}>
+            <i className={cx('icon', 'picture')} />
+            <span>My gallery</span>
+          </div>
+        </Link>
+      </Sidebar>
     </div>
   );
 }

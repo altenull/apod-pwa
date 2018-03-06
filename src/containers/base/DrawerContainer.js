@@ -1,20 +1,22 @@
-import React, { Component, type Node } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import type { State } from 'store';
 import Drawer from 'components/base/Drawer';
 
 type Props = {
-  contents: Node,
   drawer: boolean
 }
 
 class DrawerContainer extends Component<Props> {
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.props.drawer !== nextProps.drawer;
+  }
+
   render() {
-    const { contents, drawer } = this.props;
+    const { drawer } = this.props;
 
     return (
       <Drawer
-        contents={contents}
         visible={drawer}
       />
     );
