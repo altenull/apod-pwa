@@ -10,17 +10,17 @@ const LikeButton = ({onLike, isPressed}: Props) => {
   const rating = (
     <Rating
       icon='heart'
-      size='massive'
+      size='huge'
       defaultRating={isPressed ? 1 : 0}
       maxRating={1}
-      onLike={() => onLike()}
+      onRate={() => onLike()}
     />
   )
 
   return (
     <Popup
       trigger={rating}
-      content={isPressed ? 'Remove Picture' : 'Save Picture'}
+      content={(!isPressed)? 'Add to My gallery' : 'Remove from My gallery'}
       size='small'
     />
   );
