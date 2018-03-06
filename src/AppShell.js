@@ -1,4 +1,6 @@
 import React, { Component, type Node } from 'react';
+import DimmerContainer from 'containers/common/DimmerContainer';
+import APODModalContainer from 'containers/common/APODModalContainer';
 import HeaderContainer from 'containers/base/HeaderContainer';
 import DrawerContainer from 'containers/base/DrawerContainer';
 
@@ -12,10 +14,13 @@ class AppShell extends Component<Props> {
 
     return (
       <div>
+        <DimmerContainer />
+        <APODModalContainer />
+        <DrawerContainer />
         <HeaderContainer />
-        <DrawerContainer
-          contents={children}
-        />
+        <div id='contents'>
+          {children}
+        </div>
       </div>
     );
   }
