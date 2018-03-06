@@ -8,7 +8,7 @@ const cx = classNames.bind(styles);
 const Spinner = () => {
   return (
     <div className={cx('spinner')}>
-      <Loader active content='Loading' />
+      <Loader active inverted content='Loading' />
     </div>
   );
 }
