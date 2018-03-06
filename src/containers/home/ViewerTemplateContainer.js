@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import type { State } from 'store';
-import { HomeActions } from 'store/actionCreators';
+import { BaseActions, HomeActions } from 'store/actionCreators';
 import ViewerTemplate from 'components/home/ViewerTemplate';
 import Spinner from 'components/common/Spinner';
 import LikeButtonContainer from 'containers/home/LikeButtonContainer';
@@ -26,8 +26,11 @@ class ViewerTemplateContainer extends Component<Props> {
     }
   }
 
+  handleClick = () => BaseActions.openAPODModal()
+
   render() {
     const { isLoaded, apod } = this.props;
+    const { handleClick } = this;
 
     if (!isLoaded) {
       return (
@@ -43,6 +46,7 @@ class ViewerTemplateContainer extends Component<Props> {
         mediaType={apod.mediaType}
         title={apod.title}
         url={apod.url}
+        onClick={handleClick}
         likeButton={likeButton}
       />
     );
@@ -50,9 +54,10 @@ class ViewerTemplateContainer extends Component<Props> {
 }
 
 export default connect(
-  ({ home }: State) => ({
+  ({ base, home }: State) => ({
     isLoaded: home.isLoaded,
-    apod: home.apod.toJS()
+    apod: home.apod.toJS(),
+    modal: base.modal
   }),
   () => ({})
 )(ViewerTemplateContainer);
