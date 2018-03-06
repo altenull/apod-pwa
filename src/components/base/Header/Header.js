@@ -11,8 +11,8 @@ type Props = {
 const Header = ({onClick}: Props) => {
   return (
     <div className={cx('header-wrapper')}>
-      <div className={cx('sidebar-icon')} onClick={onClick}>
-        <i className="small link bars icon" />
+      <div className={cx('drawer-button-wrapper')} onClick={onClick}>
+        <i className={cx('drawer-button', 'small', 'bars', 'icon')} />
       </div>
       <span>
         Astronomy Picture Of the Day
