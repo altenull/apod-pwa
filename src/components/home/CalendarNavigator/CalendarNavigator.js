@@ -1,11 +1,10 @@
 import React from 'react';
 import styles from './CalendarNavigator.scss';
 import classNames from 'classnames/bind';
-import { Button } from 'semantic-ui-react';
+import { Button, Icon } from 'semantic-ui-react';
 import { limitedDays } from 'lib/variables';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-
 import moment from 'moment';
 
 const cx = classNames.bind(styles);
@@ -36,25 +35,29 @@ const CalendarNavigator = ({
   onChange
 }: Props) => {
   return (
-    <Button.Group>
-      { !isFirstDay &&
-        <Button
-          circular
-          icon='arrow left'
-          size='large'
-          disabled={!disabled}
-          onClick={onPrev}
-        />
-      }
+    <Button.Group size='large'>
+      <Button
+        circular
+        color='grey'
+        icon='arrow left'
+        disabled={!disabled || isFirstDay}
+        onClick={onPrev}
+      />
       <div>
         <Button
-          size='large'
+          className={cx('date-button')}
+          animated='vertical'
           toggle
-          active={calendar}
+          loading={!disabled}
           disabled={!disabled}
           onClick={onClick}
         >
-          {selectedDate}
+          <Button.Content visible>
+            {moment(selectedDate).format('LL')}
+          </Button.Content>
+          <Button.Content hidden>
+            <Icon name='calendar' color='grey' />Choose a date
+          </Button.Content>
         </Button>
         { calendar && 
           <DatePicker
@@ -66,18 +69,20 @@ const CalendarNavigator = ({
             minDate={moment(limitedDays.first)}
             maxDate={moment(maxDate)}
             onChange={onChange}
-          />
+          >
+            <div className={cx('limited-days')}>
+              <span>Available from {limitedDays.first} to today</span>
+            </div>
+          </DatePicker>
         }
       </div>
-      { !isLastDay &&
-        <Button
-          circular
-          icon='arrow right'
-          size='large'
-          disabled={!disabled}
-          onClick={onNext}
-        />
-      }
+      <Button
+        circular
+        color='grey'
+        icon='arrow right'
+        disabled={!disabled || isLastDay}
+        onClick={onNext}
+      />
     </Button.Group>
   );
 }

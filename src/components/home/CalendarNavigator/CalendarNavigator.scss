@@ -1,0 +1,18 @@
+@import 'utils';
+
+.date-button {
+  width: 15rem;
+}
+
+.limited-days {
+  margin-bottom: 1rem;
+  text-align: center;
+  span {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #343a40;
+    @include media('<=small') {
+      font-size: .85rem;
+    }
+  }
+}
