@@ -9,6 +9,10 @@ type Props = {
 }
 
 class DimmerContainer extends Component<Props> {
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.props.drawer !== nextProps.drawer;
+  }
+
   handleClick = () => {
     BaseActions.hideDrawer();
   }
