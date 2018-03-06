@@ -1,0 +1,17 @@
+@import 'utils';
+
+.masonry {
+  margin: 4rem 0 2rem 0;
+  @include media('>=huge') {
+    width: 1200px;
+  }
+  @include media('>=large', '<huge') {
+    width: 1000px;
+  }
+  @include media('>=medium', '<large') {
+    width: 750px;
+  }
+  @include media('<medium') {
+    width: 100%;
+  }
+}
