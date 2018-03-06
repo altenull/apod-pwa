@@ -1,7 +1,13 @@
 .home-template {
+  position: absolute;
+  top: 5rem;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 5rem);
   .viewer-wrapper {
     position: relative;
     width: 100%;
+    height: calc(100vh - 10rem);
   }
   .date-navigator {
     display: flex;
