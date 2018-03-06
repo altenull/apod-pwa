@@ -2,43 +2,67 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import type { State } from 'store';
 import { BaseActions } from 'store/actionCreators';
+import { List } from 'immutable';
 import APODModal from 'components/common/APODModal';
 
 type Props = {
-  modal: boolean,
-  apod: any
+  apodModal: boolean,
+  apodDate: string,
+  apod: any,
+  apodList: ?List
 }
 
 class APODModalContainer extends Component<Props> {
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.props.apodModal !== nextProps.apodModal;
+  }
+
   handleClick = () => {
-    BaseActions.closeModal();
+    BaseActions.closeAPODModal();
   }
 
   render() {
-    const { modal, apod } = this.props;
+    const { apodModal, apodDate, apod, apodList } = this.props;
     const { handleClick } = this;
 
-    if (!modal) {
+    if (!apodModal) {
       return null;
     }
 
-    return (
-      <APODModal
-        date={apod.date}
-        explanation={apod.explanation}
-        title={apod.title}
-        url={apod.url}
-        open={modal}
-        onClick={handleClick}
-      />
-    );
+    if (!apodDate) {
+      return (
+        <APODModal
+          date={apod.date}
+          explanation={apod.explanation}
+          title={apod.title}
+          url={apod.url}
+          open={apodModal}
+          onClick={handleClick}
+        />
+      );
+    } else {
+      const findResult = apodList.toJS().find(c => c.date === apodDate)
+
+      return (
+        <APODModal
+          date={apodDate}
+          explanation={findResult.explanation}
+          title={findResult.title}
+          url={findResult.url}
+          open={apodModal}
+          onClick={handleClick}
+        />
+      );
+    }
   }
 }
 
 export default connect(
-  ({ base, home }: State) => ({
-    modal: base.modal,
-    apod: home.apod.toJS()
+  ({ base, home, gallery }: State) => ({
+    apodModal: base.apodModal,
+    apodDate: base.apodDate,
+    apod: home.apod.toJS(),
+    apodList: gallery.apodList
   }),
   () => ({})
 )(APODModalContainer);
