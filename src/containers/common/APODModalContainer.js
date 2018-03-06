@@ -14,7 +14,17 @@ type Props = {
 
 class APODModalContainer extends Component<Props> {
   shouldComponentUpdate(nextProps, nextState) {
-    return this.props.apodModal !== nextProps.apodModal;
+    const current = {
+      apodModal: this.props.apodModal,
+      apodDate: this.props.apodDate
+    }
+
+    const next = {
+      apodModal: nextProps.apodModal,
+      apodDate: nextProps.apodDate
+    }
+
+    return current !== next;
   }
 
   handleClick = () => {
