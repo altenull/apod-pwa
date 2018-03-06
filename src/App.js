@@ -6,9 +6,6 @@ import AppShell from './AppShell';
 import 'semantic-ui-css/semantic.min.css';
 import IndexedDB from 'lib/IndexedDB';
 
-// 0. AppShell.. Header & Drawer
-// 1. contents.. Home  (+ Dimmer when network connection loss)
-// 2. contents.. Gallery
 class App extends Component {
   componentWillMount() {
     IndexedDB.init().then(() => {

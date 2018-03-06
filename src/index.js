@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import Root from './Root';
+import './styles/main.scss';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+require('dotenv').config();
+
+ReactDOM.render(<Root />, document.getElementById('root'));
 registerServiceWorker();
