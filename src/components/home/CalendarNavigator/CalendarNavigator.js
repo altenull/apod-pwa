@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './CalendarNavigator.scss';
 import classNames from 'classnames/bind';
-import { Button, Icon } from 'semantic-ui-react';
+import { Button, Icon, Transition } from 'semantic-ui-react';
 import { limitedDays } from 'lib/variables';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -19,7 +19,8 @@ type Props = {
   selectedDate: string,
   calendar: boolean,
   onClick(): void,
-  onChange(): void
+  onChange(): void,
+  onLine: boolean
 }
 
 const CalendarNavigator = ({
@@ -32,58 +33,64 @@ const CalendarNavigator = ({
   selectedDate,
   calendar,
   onClick,
-  onChange
+  onChange,
+  onLine
 }: Props) => {
   return (
-    <Button.Group size='large'>
-      <Button
-        circular
-        color='grey'
-        icon='arrow left'
-        disabled={!disabled || isFirstDay}
-        onClick={onPrev}
-      />
-      <div>
+    <div>
+      <Transition visible={!onLine} animation='shake' duration={750}>
+        <div className={cx('disconnect-cover', `${onLine && 'hide'}`)}>Disconnected network.</div>
+      </Transition>
+      <Button.Group size='large' className={cx('calendar-navigator')}>
         <Button
-          className={cx('date-button')}
-          animated='vertical'
-          toggle
-          loading={!disabled}
-          disabled={!disabled}
-          onClick={onClick}
-        >
-          <Button.Content visible>
-            {moment(selectedDate).format('LL')}
-          </Button.Content>
-          <Button.Content hidden>
-            <Icon name='calendar' color='grey' />Choose a date
-          </Button.Content>
-        </Button>
-        { calendar && 
-          <DatePicker
-            showYearDropdown
-            scrollableYearDropdown
-            withPortal
-            inline
-            selected={moment(selectedDate)}
-            minDate={moment(limitedDays.first)}
-            maxDate={moment(maxDate)}
-            onChange={onChange}
+          circular
+          color='grey'
+          icon='arrow left'
+          disabled={!disabled || isFirstDay}
+          onClick={onPrev}
+        />
+        <div>
+          <Button
+            className={cx('date-button')}
+            animated='vertical'
+            toggle
+            loading={!disabled}
+            disabled={!disabled}
+            onClick={onClick}
           >
-            <div className={cx('limited-days')}>
-              <span>Available from {limitedDays.first} to today</span>
-            </div>
-          </DatePicker>
-        }
-      </div>
-      <Button
-        circular
-        color='grey'
-        icon='arrow right'
-        disabled={!disabled || isLastDay}
-        onClick={onNext}
-      />
-    </Button.Group>
+            <Button.Content visible>
+              {moment(selectedDate).format('LL')}
+            </Button.Content>
+            <Button.Content hidden>
+              <Icon name='calendar' color='grey' />Choose a date
+            </Button.Content>
+          </Button>
+          { (calendar && onLine) &&
+            <DatePicker
+              showYearDropdown
+              scrollableYearDropdown
+              withPortal
+              inline
+              selected={moment(selectedDate)}
+              minDate={moment(limitedDays.first)}
+              maxDate={moment(maxDate)}
+              onChange={onChange}
+            >
+              <div className={cx('limited-days')}>
+                <span>Available from {limitedDays.first} to today</span>
+              </div>
+            </DatePicker>
+          }
+        </div>
+        <Button
+          circular
+          color='grey'
+          icon='arrow right'
+          disabled={!disabled || isLastDay}
+          onClick={onNext}
+        />
+      </Button.Group>
+    </div>
   );
 }
 

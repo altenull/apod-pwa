@@ -1,18 +1,39 @@
 @import 'utils';
 
-.date-button {
-  width: 15rem;
+.disconnect-cover {
+  position: fixed;
+  top: calc(100vh - 5rem);
+  width: 292.25px;
+  height: 41.125px;
+  background: rgba(0, 0, 0, 0.83);
+  border-radius: 3px;
+  font-size: 1.4rem;
+  color: white;
+  z-index: 21;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.limited-days {
-  margin-bottom: 1rem;
-  text-align: center;
-  span {
-    font-weight: 700;
-    font-size: 1rem;
-    color: #343a40;
-    @include media('<=small') {
-      font-size: .85rem;
+.hide {
+  display: none;
+}
+
+.calendar-navigator {
+  z-index: 20;
+  .date-button {
+    width: 15rem;
+  }
+  .limited-days {
+    margin-bottom: 1rem;
+    text-align: center;
+    span {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #343a40;
+      @include media('<=small') {
+        font-size: .85rem;
+      }
     }
   }
 }

@@ -11,7 +11,8 @@ type Props = {
   isLoaded: boolean,
   apod: any,
   today: string,
-  calendar: boolean
+  calendar: boolean,
+  onLine: boolean
 }
 
 class CalendarNavigatorContainer extends Component<Props> {
@@ -52,7 +53,7 @@ class CalendarNavigatorContainer extends Component<Props> {
   }
 
   render() {
-    const { isLoaded, apod, today, calendar } = this.props;
+    const { isLoaded, apod, today, calendar, onLine } = this.props;
     const { handlePrev, handleNext, handleCalendarToggle, handleChange } = this;
 
     const isFirstDay = limitedDays.first === apod.date;
@@ -70,17 +71,19 @@ class CalendarNavigatorContainer extends Component<Props> {
         calendar={calendar}
         onClick={handleCalendarToggle}
         onChange={handleChange}
+        onLine={onLine}
       />
     );
   }
 }
 
 export default connect(
-  ({ home }: State)=>({
+  ({ base, home }: State)=>({
     isLoaded: home.isLoaded,
     apod: home.apod.toJS(),
     today: home.today,
-    calendar: home.calendar
+    calendar: home.calendar,
+    onLine: base.onLine
   }),
   ()=>({})
 )(CalendarNavigatorContainer);
