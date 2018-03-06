@@ -17,6 +17,7 @@ const APODModal = ({date, explanation, title, url, open, onClick}: Props) => {
   return (
     <div className={cx('apod-modal')} onClick={onClick}>
       <div className={cx('apod-dimmer')}></div>
+      <i className={cx('exit-button', 'icon', 'close')} />
       <div className={cx('apod-template')}>
         <img src={url} alt={title} />
         <div className={cx('apod-info')}>

@@ -1,3 +1,5 @@
+@import 'utils';
+
 .apod-modal {
   display: flex;
   justify-content: center;
@@ -11,44 +13,101 @@
     width: 100vw;
     height: 100vh;
     z-index: 71;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.85);
+  }
+  .exit-button {
+    display: none;
+    position: fixed;
+    top: 25px;
+    right: 15px;
+    color: white;
+    font-size: 1.6rem;
+    cursor: pointer;
+    z-index: 72;
+    @include media('<=small') {
+      display: block;
+    }
   }
   .apod-template {
-    width: 90%;
-    height: 70%;
     display: flex;
+    margin: 4rem;
     z-index: 72;
+    @include media('<=large') {
+      flex-direction: column;
+    }
+    @include media('<=medium') {
+      margin: 1.6rem;
+    }
     img {
+      align-self: center;
+      width: 45vw;
       height: auto;
-      width: 40vw;
       box-shadow: 0 10px 20px rgba(255, 255, 255, 0.19), 0 6px 6px rgba(255, 255, 255, 0.23);
+      @include media('<=large') {
+        width: 60vw;
+        height: auto;
+      }
     }
     .apod-info {
       display: flex;
       justify-content: center;
       flex-direction: column;
       margin-left: 1.8rem;
+      @include media('<=large') {
+        margin-left: 0;
+        margin-top: 2.8rem;
+      }
       .apod-header {
         display: flex;
         flex-direction: column;
-        border-left: 5px solid red;
+        border-left: 5px solid $planet;
         margin-bottom: 1.2rem;
         padding: .6rem 0 .2rem .7rem;
+        @include media('<=large') {
+          padding: .6rem 0 0 .7rem;
+        }
+        @include media('<=medium') {
+          padding: .3rem 0 0 .55rem;
+        }
         .title {
-          color: #f1f3f5;
-          font-size: 1.8rem;
+          color: $apod-title-bright;
+          font-size: 1.55rem;
           font-weight: 700;
           margin-bottom: .5rem;
+          @include media('<=huge') {
+            font-size: 1.3rem;
+          }
+          @include media('<=small') {
+            font-size: 1.1rem;
+            margin-bottom: .25rem;
+          }
         }
         .date {
-          color: #868e96;
+          color: $apod-date;
           font-size: 1rem;
+          @include media('<=huge') {
+            font-size: .9rem;
+          }
+          @include media('<=small') {
+            font-size: .8rem;
+          }
         }
       }
       p {
-        color: #dee2e6;
-        font-size: 1.2rem;
+        color: $apod-explanation;
+        font-size: 1.15rem;
         line-height: 2rem;
+        @include media('<=huge') {
+          font-size: 1.1rem;
+          line-height: 1.7rem;
+        }
+        @include media('<=medium') {
+          font-size: 1rem;
+        }
+        @include media('<=small') {
+          font-size: .8rem;
+          line-height: 1.5rem;
+        }
       }
     }
   }
