@@ -1,7 +1,6 @@
 import React, { type Node } from 'react';
 import styles from './ViewerTemplate.scss';
 import classNames from 'classnames/bind';
-import { Rating, Popup } from 'semantic-ui-react';
 
 const cx = classNames.bind(styles);
 
@@ -10,10 +9,11 @@ type Props = {
   mediaType: string,
   title : string,
   url: string,
+  onClick(): void,
   likeButton: Node
 }
 
-const ViewerTemplate = ({date, mediaType, title, url, likeButton}: Props) => {
+const ViewerTemplate = ({date, mediaType, title, url, onClick, likeButton}: Props) => {
   return (
     <div className={cx('viewer')}>
       { (mediaType === 'image')
@@ -23,10 +23,17 @@ const ViewerTemplate = ({date, mediaType, title, url, likeButton}: Props) => {
               <span className={cx('title')}>{title}</span>
               {likeButton}
             </div>
-            <img src={url} alt={title} />
+            <img src={url} alt={title} id='blobimage' onClick={onClick}/>
           </div>
         )
-        : <iframe src={url} title={title} frameBorder="0" gesture="media" allow="encrypted-media" allowFullScreen />
+        : <iframe
+            src={url}
+            title={title}
+            frameBorder="0"
+            gesture="media"
+            allow="encrypted-media"
+            allowFullScreen
+          />
       }
     </div>
   );
