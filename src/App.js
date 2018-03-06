@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { GalleryActions } from 'store/actionCreators';
+import { BaseActions, GalleryActions } from 'store/actionCreators';
 import { Home, Gallery } from 'pages';
 import AppShell from './AppShell';
 import 'semantic-ui-css/semantic.min.css';
@@ -17,6 +17,15 @@ class App extends Component {
 
   componentWillUnmount() {
     IndexedDB.close();
+  }
+
+  componentDidMount() {
+    window.addEventListener('offline', () => {
+      BaseActions.changeNetworkStatus(window.navigator.onLine);
+    });
+    window.addEventListener('online', () => {
+      BaseActions.changeNetworkStatus(window.navigator.onLine);
+    });
   }
 
   render() {
