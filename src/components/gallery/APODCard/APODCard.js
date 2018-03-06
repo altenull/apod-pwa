@@ -25,7 +25,7 @@ class APODCard extends Component<Props> {
     const { date, title, url, onClick, onRemove } = this.props;
     const { active } = this.state;
     const { handleShow, handleHide } = this;
-
+    
     const content = (
       <div className={cx('apod-picture-dimmer')}>
         <Button
@@ -36,7 +36,7 @@ class APODCard extends Component<Props> {
         </Button>
       </div>
     )
-  
+
     return (
       <div className={cx('card-container')}>
         <div className={cx('card-wrapper')}>

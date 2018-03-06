@@ -17,7 +17,7 @@
 
 .apod-picture-dimmer {
   position: absolute;
-  top: 50%;
+  top: calc(50% - 17.5px);
   left: calc(50% - 47.5px);
 }
 
