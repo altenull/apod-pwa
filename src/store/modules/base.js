@@ -7,13 +7,15 @@ const SHOW_DRAWER = 'base/SHOW_DRAWER';
 const HIDE_DRAWER = 'base/HIDE_DRAWER';
 const OPEN_APOD_MODAL = 'base/OPEN_APOD_MODAL';
 const CLOSE_APOD_MODAL = 'base/CLOSE_APOD_MODAL';
+const CHANGE_NETWORK_STATUS = 'base/CHANGE_NETWORK_STATUS';
 
 export type BaseActionCreators = {
   initializeBase(): any,
   showDrawer(): any,
   hideDrawer(): any,
   openAPODModal(date: ?string): any,
-  closeAPODModal(): any
+  closeAPODModal(): any,
+  changeNetworkStatus(onLine: boolean): any
 };
 
 export const actionCreators = {
@@ -21,19 +23,22 @@ export const actionCreators = {
   showDrawer: createAction(SHOW_DRAWER),
   hideDrawer: createAction(HIDE_DRAWER),
   openAPODModal: createAction(OPEN_APOD_MODAL),
-  closeAPODModal: createAction(CLOSE_APOD_MODAL)
+  closeAPODModal: createAction(CLOSE_APOD_MODAL),
+  changeNetworkStatus: createAction(CHANGE_NETWORK_STATUS)
 };
 
 export type Base = {
   drawer: boolean,
   apodModal: boolean,
-  apodDate: ?string
+  apodDate: ?string,
+  onLine: boolean
 };
 
 const BaseRecord = Record({
   drawer: false,
   apodModal: false,
-  apodDate: null
+  apodDate: null,
+  onLine: true
 });
 
 const initialState: Map<string, *> = BaseRecord();
@@ -49,5 +54,6 @@ export default handleActions({
       return state.set('apodModal', true).set('apodDate', date);
     }
   },
-  [CLOSE_APOD_MODAL]: state => state.set('apodModal', false).set('apodDate', null)
+  [CLOSE_APOD_MODAL]: state => state.set('apodModal', false).set('apodDate', null),
+  [CHANGE_NETWORK_STATUS]: (state, { payload: onLine }) => state.set('onLine', onLine)
 }, initialState);
