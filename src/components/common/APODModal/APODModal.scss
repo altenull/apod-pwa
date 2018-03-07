@@ -85,12 +85,6 @@
         .date {
           color: $apod-date;
           font-size: 1rem;
-          @include media('<=huge') {
-            font-size: .9rem;
-          }
-          @include media('<=small') {
-            font-size: .8rem;
-          }
         }
       }
       p {
@@ -105,8 +99,7 @@
           font-size: 1rem;
         }
         @include media('<=small') {
-          font-size: .8rem;
-          line-height: 1.5rem;
+          line-height: 1.35rem;
         }
       }
     }
