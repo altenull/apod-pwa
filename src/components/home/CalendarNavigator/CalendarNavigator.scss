@@ -1,10 +1,14 @@
 @import 'utils';
 
+$navigator-width: 292.25px;
+$navigator-height: 41.125px;
+
 .disconnect-cover {
   position: fixed;
-  top: calc(100vh - 5rem);
-  width: 292.25px;
-  height: 41.125px;
+  top: calc(100% - 5rem);
+  left: calc(50% - 146.125px);
+  width: $navigator-width;
+  height: $navigator-height;
   background: rgba(0, 0, 0, 0.83);
   border-radius: 3px;
   font-size: 1.4rem;
@@ -20,6 +24,9 @@
 }
 
 .calendar-navigator {
+  position: fixed;
+  top: calc(100% - 5rem);
+  left: calc(50% - 146.125px);
   z-index: 20;
   .date-button {
     width: 15rem;
