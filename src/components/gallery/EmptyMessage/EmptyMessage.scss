@@ -21,8 +21,8 @@
     margin-bottom: 5rem;
     transition: .2s all ease-in;
     @include media('<small') {
-      font-size: 1.2rem;
-      margin-top: -1rem;
+      font-size: 1rem;
+      margin-top: -1.2rem;
     }
   }
 }

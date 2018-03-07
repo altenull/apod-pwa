@@ -6,9 +6,9 @@ const cx = classNames.bind(styles);
 
 const EmptyMessage = () => {
   return (
-    <div className={cx('empty-message-wrapper')}>
+    <div className={cx('empty-message-container')}>
       <img src={require('static/images/planet.svg')} alt='planet' />
-      <span>your gallery is empty~ :(</span>
+      <span>your gallery is empty :(</span>
     </div>
   );
 }
