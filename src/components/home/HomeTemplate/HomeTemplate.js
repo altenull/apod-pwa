@@ -6,18 +6,18 @@ const cx = classNames.bind(styles);
 
 type Props = {
   viewer: Node,
-  dateNavigator: Node,
+  calendarNavigator: Node,
   onClick(): void
 }
 
-const HomeTemplate = ({viewer, dateNavigator, onClick}: Props) => {
+const HomeTemplate = ({viewer, calendarNavigator, onClick}: Props) => {
   return (
     <div className={cx('home-template')} onClick={onClick}>
       <div className={cx('viewer-wrapper')}>
         {viewer}
       </div>
-      <div className={cx('date-navigator')}>
-        {dateNavigator}
+      <div className={cx('calendar-navigator')}>
+        {calendarNavigator}
       </div>
     </div>
   );

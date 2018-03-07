@@ -10,12 +10,12 @@ class HomeTemplateContainer extends Component {
   render() {
     const { handleClick } = this;
     const viewer = <ViewerTemplateContainer />;
-    const dateNavigator = <CalendarNavigatorContainer />;
+    const calendarNavigator = <CalendarNavigatorContainer />;
 
     return (
       <HomeTemplate
         viewer={viewer}
-        dateNavigator={dateNavigator}
+        calendarNavigator={calendarNavigator}
         onClick={handleClick}
       />
     );
