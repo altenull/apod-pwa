@@ -13,7 +13,11 @@ type Props = {
 
 class ViewerTemplateContainer extends Component<Props> {
   componentDidMount() {
-    this.getFirstAPOD();
+    const { isLoaded } = this.props;
+
+    if (!isLoaded) {
+      this.getFirstAPOD();
+    }
   }
 
   getFirstAPOD = async () => {
