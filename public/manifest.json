@@ -1,15 +1,52 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "APOD",
+  "name": "Astronomy Picture Of the Day",
+  "description": "Feel the universe and keep it.",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "icons/homeScreen-48.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/homeScreen-72.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/homeScreen-96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/homeScreen-144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/homeScreen-168.png",
+      "sizes": "168x168",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/homeScreen-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/homeScreen-256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/homeScreen-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }
   ],
   "start_url": "./index.html",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#929292",
+  "background_color": "#929292",
+  "orientation": "portrait"
 }
