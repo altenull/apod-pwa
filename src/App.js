@@ -5,6 +5,7 @@ import { Home, Gallery } from 'pages';
 import AppShell from './AppShell';
 import 'semantic-ui-css/semantic.min.css';
 import IndexedDB from 'lib/IndexedDB';
+import ReactGA from 'react-ga';
 
 class App extends Component {
   componentWillMount() {
@@ -20,6 +21,11 @@ class App extends Component {
   }
 
   componentDidMount() {
+    ReactGA.set({
+      page: window.location.pathname + window.location.search
+    });
+    ReactGA.pageview(window.location.pathname + window.location.search);
+
     window.addEventListener('offline', () => {
       BaseActions.changeNetworkStatus(window.navigator.onLine);
     });
