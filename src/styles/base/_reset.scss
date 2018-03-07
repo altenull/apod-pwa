@@ -1,8 +1,10 @@
+@import 'utils';
+
 body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background: #929292;
+  background: $default-background;
 }
 
 *, *:before, *:after {
