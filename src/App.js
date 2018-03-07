@@ -36,14 +36,12 @@ class App extends Component {
 
   render() {
     return (
-      <React.Fragment>
-        <AppShell>
-          <Switch>
-            <Route exact path='/' component={Home} />
-            <Route path='/gallery' component={Gallery} />
-          </Switch>
-        </AppShell>
-      </React.Fragment>
+      <AppShell>
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route path='/gallery' component={Gallery} />
+        </Switch>
+      </AppShell>
     );
   }
 }
