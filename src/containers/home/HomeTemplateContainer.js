@@ -1,10 +1,38 @@
 import React, { Component } from 'react';
-import { BaseActions } from 'store/actionCreators';
+import { connect } from 'react-redux';
+import type { State } from 'store';
+import { BaseActions, HomeActions } from 'store/actionCreators';
 import HomeTemplate from 'components/home/HomeTemplate';
 import CalendarNavigatorContainer from 'containers/home/CalendarNavigatorContainer';
 import ViewerTemplateContainer from 'containers/home/ViewerTemplateContainer';
 
-class HomeTemplateContainer extends Component {
+type Props = {
+  isLoaded: boolean
+}
+
+class HomeTemplateContainer extends Component<Props> {
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.props.isLoaded === nextProps.isLoaded;
+  }
+
+  componentDidMount() {
+    const { isLoaded } = this.props;
+
+    if (!isLoaded) {
+      this.getFirstAPOD();
+    }
+  }
+
+  getFirstAPOD = async () => {
+    try {
+      const response = await HomeActions.getAPOD();
+      const { date } = response.data;
+      HomeActions.setToday(date);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   handleClick = () => BaseActions.hideDrawer()
 
   render() {
@@ -22,4 +50,9 @@ class HomeTemplateContainer extends Component {
   }
 }
 
-export default HomeTemplateContainer;
+export default connect(
+  ({ home }: State) => ({
+    isLoaded: home.isLoaded
+  }),
+  () => ({})
+)(HomeTemplateContainer);
