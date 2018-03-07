@@ -39,6 +39,15 @@ const Drawer = ({visible}: Props) => {
             <span>My gallery</span>
           </div>
         </Link>
+        <a
+          href='https://github.com/altenull/apod-pwa'
+          target="_blank"
+          rel="noopener noreferrer"
+          className={cx('github-button')}
+        >
+          <span>Made by altenull</span>
+          <i className={cx('icon', 'github')} />
+        </a>
       </Sidebar>
     </div>
   );
