@@ -11,7 +11,7 @@ type Props = {
 
 const MasonryLayout = ({children}: Props) => {
   return (
-    <Masonry className={cx('masonry')}>
+    <Masonry className={cx('masonry-layout')}>
       {children}
     </Masonry>
   );

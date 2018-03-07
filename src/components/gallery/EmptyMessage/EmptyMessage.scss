@@ -1,14 +1,14 @@
 @import 'utils';
 
-.empty-message-container {
+.empty-message {
   display: flex;
   justify-content: center;
   flex-direction: column;
   img {
     height: 300px;
     user-select: none;
-    transition: .2s all ease-in;
-    @include media('<small') {
+    transition: all .2s ease-in;
+    @include media('<=small') {
       height: 200px;
     }
   }
@@ -19,8 +19,8 @@
     text-align: center;
     margin-top: -1.6rem;
     margin-bottom: 5rem;
-    transition: .2s all ease-in;
-    @include media('<small') {
+    transition: all .2s ease-in;
+    @include media('<=small') {
       font-size: 1rem;
       margin-top: -1.2rem;
     }

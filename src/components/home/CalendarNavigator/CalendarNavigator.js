@@ -39,11 +39,10 @@ const CalendarNavigator = ({
   return (
     <div>
       <Transition visible={!onLine} animation='shake' duration={750}>
-        <div className={cx('disconnect-cover', `${onLine && 'hide'}`)}>Disconnected network.</div>
+        <div className={cx('warning', `${onLine && 'hide'}`)}>Disconnected network.</div>
       </Transition>
       <Button.Group size='large' className={cx('calendar-navigator')}>
         <Button
-          circular
           color='grey'
           icon='arrow left'
           disabled={!disabled || isFirstDay}
@@ -83,7 +82,6 @@ const CalendarNavigator = ({
           }
         </div>
         <Button
-          circular
           color='grey'
           icon='arrow right'
           disabled={!disabled || isLastDay}

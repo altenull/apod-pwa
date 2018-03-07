@@ -15,23 +15,21 @@
   }
 }
 
-.apod-picture-dimmer {
-  position: absolute;
-  top: calc(50% - 17.5px);
-  left: calc(50% - 47.5px);
-}
-
-.card-container {
+.card-wrapper {
   padding: 0 1.5rem 2rem 1.5rem;
-  .card-wrapper {
+  .card-container {
     @extend %responsive-card-width;
     background: white;
     border-radius: 3px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-    .apoc-picture {
+    box-shadow: $material-shadow2;
+    .apod-picture {
       @extend %responsive-card-width;
       z-index: 10;
-      position: relative;
+      cursor: pointer;
+      transition: all .2s ease-in;
+      &:hover {
+        box-shadow: $material-shadow2;
+      }
     }
     .card-header {
       display: flex;
@@ -42,7 +40,6 @@
         color: $apod-title-dark;
         font-size: 1.2rem;
         font-weight: 700;
-        margin-right: 1rem;
       }
       .remove-button-wrapper {
         height: 100%;
@@ -56,12 +53,12 @@
         }
         &:hover {
           .remove-button {
-            color: darken($remove-button, 10%);
+            color: darken($remove-button, 20%);
           }
         }
         &:active {
           .remove-button {
-            color: darken($remove-button, 20%);
+            color: darken($remove-button, 40%);
           }
         }
       }

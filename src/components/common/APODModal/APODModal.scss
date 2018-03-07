@@ -8,7 +8,7 @@
   width: 100vw;
   height: 100vh;
   z-index: 70;
-  .apod-dimmer {
+  .dimmer {
     position: fixed;
     width: 100vw;
     height: 100vh;
@@ -28,7 +28,7 @@
       display: block;
     }
   }
-  .apod-template {
+  .template {
     display: flex;
     margin: 4rem;
     z-index: 72;
@@ -44,11 +44,14 @@
       height: auto;
       box-shadow: 0 10px 20px rgba(255, 255, 255, 0.19), 0 6px 6px rgba(255, 255, 255, 0.23);
       @include media('<=large') {
-        width: 60vw;
+        width: 35vw;
         height: auto;
       }
+      @include media('<=small') {
+        display: none;
+      }
     }
-    .apod-info {
+    .info-container {
       display: flex;
       justify-content: center;
       flex-direction: column;
@@ -57,18 +60,15 @@
         margin-left: 0;
         margin-top: 2.8rem;
       }
-      .apod-header {
+      @include media('<=small') {
+        margin-top: 0;
+      }
+      .header {
         display: flex;
         flex-direction: column;
         border-left: 5px solid $default-background;
         margin-bottom: 1.2rem;
-        padding: .6rem 0 .2rem .7rem;
-        @include media('<=large') {
-          padding: .6rem 0 0 .7rem;
-        }
-        @include media('<=medium') {
-          padding: .3rem 0 0 .55rem;
-        }
+        padding: .2rem 0 .2rem .8rem;
         .title {
           color: $apod-title-bright;
           font-size: 1.55rem;
@@ -78,7 +78,7 @@
             font-size: 1.3rem;
           }
           @include media('<=small') {
-            font-size: 1.1rem;
+            font-size: 1.25rem;
             margin-bottom: .25rem;
           }
         }
@@ -93,13 +93,13 @@
         line-height: 2rem;
         @include media('<=huge') {
           font-size: 1.1rem;
-          line-height: 1.7rem;
+          line-height: 1.85rem;
         }
         @include media('<=medium') {
           font-size: 1rem;
         }
         @include media('<=small') {
-          line-height: 1.35rem;
+          line-height: 1.4rem;
         }
       }
     }

@@ -10,7 +10,7 @@ type Props = {
 
 const Header = ({onClick}: Props) => {
   return (
-    <div className={cx('header-wrapper')}>
+    <div className={cx('header')}>
       <div className={cx('drawer-button-wrapper')} onClick={onClick}>
         <i className={cx('drawer-button', 'small', 'bars', 'icon')} />
       </div>

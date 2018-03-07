@@ -13,7 +13,7 @@ type Props = {
 const HomeTemplate = ({viewer, calendarNavigator, onClick}: Props) => {
   return (
     <div className={cx('home-template')} onClick={onClick}>
-      <div className={cx('viewer-wrapper')}>
+      <div className={cx('viewer')}>
         {viewer}
       </div>
       <div className={cx('calendar-navigator')}>

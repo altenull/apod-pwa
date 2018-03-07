@@ -21,7 +21,6 @@ const LikeButton = ({onLike, isPressed}: Props) => {
     <Popup
       trigger={rating}
       content={(!isPressed)? 'Add to My gallery' : 'Remove from My gallery'}
-      on={'click'}
       size='small'
     />
   );

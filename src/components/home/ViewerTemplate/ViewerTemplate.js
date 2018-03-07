@@ -15,15 +15,15 @@ type Props = {
 
 const ViewerTemplate = ({date, mediaType, title, url, onClick, likeButton}: Props) => {
   return (
-    <div className={cx('viewer')}>
+    <div className={cx('viewer-container')}>
       { (mediaType === 'image')
         ? (
-          <div className={cx('picture-wrapper')}>
-            <div className={cx('title-wrapper')}>
+          <div className={cx('viewer')}>
+            <div className={cx('header')}>
               <span className={cx('title')}>{title}</span>
               {likeButton}
             </div>
-            <img src={url} alt={title} id='blobimage' onClick={onClick}/>
+            <img src={url} alt={title} onClick={onClick}/>
           </div>
         )
         : <iframe

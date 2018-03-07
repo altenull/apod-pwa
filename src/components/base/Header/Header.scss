@@ -1,9 +1,9 @@
 @import 'utils';
 
-.header-wrapper {
-  background: #262626;
+.header {
+  background: $default-header;
   height: 5rem;
-  color: #f8f9fa;
+  color: $apod-title-bright;
   font-size: 2rem;
   font-weight: 700;
   display: flex;
@@ -12,7 +12,7 @@
   width: 100%;
   z-index: 50;
   .drawer-button-wrapper {
-    padding: 1.5rem;
+    padding: 1.2rem;
     cursor: pointer;
     .drawer-button {
       color: $drawer-button;
@@ -29,11 +29,10 @@
     }
   }
   span {
-    transition: .2s all ease-in;
-    @include media('<medium') {
+    @include media('<=medium') {
       font-size: 1.65rem;
     }
-    @include media('<small') {
+    @include media('<=small') {
       font-size: 1.45rem;
     }
   }

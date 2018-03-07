@@ -16,12 +16,12 @@ type Props = {
 const APODModal = ({date, explanation, title, url, open, onClick}: Props) => {
   return (
     <div className={cx('apod-modal')} onClick={onClick}>
-      <div className={cx('apod-dimmer')}></div>
+      <div className={cx('dimmer')} />
       <i className={cx('exit-button', 'icon', 'close')} />
-      <div className={cx('apod-template')}>
+      <div className={cx('template')}>
         <img src={url} alt={title} />
-        <div className={cx('apod-info')}>
-          <div className={cx('apod-header')}>
+        <div className={cx('info-container')}>
+          <div className={cx('header')}>
             <span className={cx('title')}>
               {title}
             </span>
@@ -29,7 +29,7 @@ const APODModal = ({date, explanation, title, url, open, onClick}: Props) => {
               {date}
             </span>
           </div>
-          <p onClick={(event) => event.stopPropagation()}>
+          <p onClick={(e) => e.stopPropagation()}>
             {explanation}
           </p>
         </div>

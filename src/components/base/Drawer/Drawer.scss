@@ -1,16 +1,14 @@
 @import 'utils';
 
-.drawer-wrapper {
-  .sidebar {
-    z-index: 60;
-    .logo {
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 1.8rem;
-      img {
-        height: 10rem;
-        user-select: none;
-      }
+.drawer {
+  z-index: 60;
+  .app-logo {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.8rem;
+    img {
+      height: 10rem;
+      user-select: none;
     }
     .title {
       user-select: none;
@@ -20,42 +18,43 @@
       text-align: right;
       margin: -2.5rem 1.5rem 0 0;
     }
-    .menu-button {
-      display: flex;
-      color: $menu-button;
-      padding: 1.2rem 0 1rem 1.5rem;
-      i {
-        font-size: 1.8rem;
-        margin-right: 1.5rem;
-      }
-      span {
-        font-size: 1rem;
-        font-weight: 700;
-      }
-      &:hover {
-        background: darken($menu-button, 20%);
-        color: darken($menu-button, 80%);
-      }
+  }
+  .menu-button {
+    display: flex;
+    color: $menu-button;
+    padding: 1.2rem 0 1rem 1.5rem;
+    i {
+      font-size: 1.8rem;
+      margin-right: 1.5rem;
     }
-    .github-button {
-      display: flex;
-      color: $menu-button;
-      width: 100%;
-      justify-content: center;
-      position: absolute;
-      bottom: 0;
-      padding: .8rem 0 .6rem 0;
-      span {
-        font-size: 1rem;
-      }
-      i {
-        font-size: 1.6rem;
-        margin-left: .4rem;
-      }
-      &:hover {
-        background: darken($menu-button, 20%);
-        color: darken($menu-button, 80%);
-      }
+    span {
+      font-size: 1rem;
+      font-weight: 700;
+    }
+    &:hover {
+      background: darken($menu-button, 20%);
+      color: darken($menu-button, 80%);
+    }
+  }
+  .github-button {
+    display: flex;
+    color: $menu-button;
+    width: 100%;
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+    padding: .8rem 0 .6rem 0;
+    span {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+    i {
+      font-size: 1.6rem;
+      margin-left: .4rem;
+    }
+    &:hover {
+      background: darken($menu-button, 20%);
+      color: darken($menu-button, 80%);
     }
   }
 }

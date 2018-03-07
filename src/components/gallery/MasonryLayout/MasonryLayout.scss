@@ -1,6 +1,6 @@
 @import 'utils';
 
-.masonry {
+.masonry-layout {
   margin: 4rem 0 2rem 0;
   @include media('>=huge') {
     width: 1200px;

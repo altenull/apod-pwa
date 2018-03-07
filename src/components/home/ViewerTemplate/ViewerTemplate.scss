@@ -1,32 +1,32 @@
 @import 'utils';
 
-.viewer {
-  height: 100%;
+.viewer-container {
   width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  .picture-wrapper {
+  .viewer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
     img {
       width: auto;
       height: 55vh;
       cursor: pointer;
-      transition: all 0.2s ease-in;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+      transition: all .2s ease-in;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
       &:hover {
         transform: translateY(-3px);
         box-shadow: 0 12px 23px rgba(0, 0, 0, 0.35)
       }
-      @include media('<=large', 'portrait') {
-        width: 85vw;
+      @include media('<=large') {
+        width: 80vw;
         height: auto;
-      }
-      @include media('<=large', 'landscape') {
-        width: auto;
-        height: 50vh;
+        max-height: 70vh;
       }
     }
-    .title-wrapper {
+    .header {
       display: flex;
       justify-content: space-between;
       padding-bottom: 1rem;
@@ -42,7 +42,7 @@
   }
   iframe {
     background: black;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    box-shadow: $material-shadow1;
     width: 60vw;
     height: 50vh;
     @include media('<=large') {
