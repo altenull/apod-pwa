@@ -42,6 +42,7 @@
     "react-datepicker": "^1.2.1",
     "react-dev-utils": "^5.0.0",
     "react-dom": "^16.2.0",
+    "react-ga": "^2.4.1",
     "react-masonry-component": "^6.0.2",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
