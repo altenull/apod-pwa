@@ -11,19 +11,16 @@
     justify-content: center;
     flex-direction: column;
     img {
+      display: block;
       width: auto;
-      height: 55vh;
+      max-width: calc(100vw - 4rem);
+      max-height: calc(100vh - 20rem);
       cursor: pointer;
       transition: all .2s ease-in;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+      box-shadow: $material-shadow2;
       &:hover {
         transform: translateY(-3px);
         box-shadow: 0 12px 23px rgba(0, 0, 0, 0.35)
-      }
-      @include media('<=large') {
-        width: 80vw;
-        height: auto;
-        max-height: 70vh;
       }
     }
     .header {
@@ -43,10 +40,7 @@
   iframe {
     background: black;
     box-shadow: $material-shadow1;
-    width: 60vw;
-    height: 50vh;
-    @include media('<=large') {
-      width: 85vw;
-    }
+    width: calc(100vw - 4rem);
+    height: calc(100vh - 20rem);
   }
 }
