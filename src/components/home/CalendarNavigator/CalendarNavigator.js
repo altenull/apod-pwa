@@ -19,6 +19,7 @@ type Props = {
   selectedDate: string,
   calendar: boolean,
   onClick(): void,
+  onClickOutside(e: Event): void,
   onChange(): void,
   onLine: boolean
 }
@@ -33,6 +34,7 @@ const CalendarNavigator = ({
   selectedDate,
   calendar,
   onClick,
+  onClickOutside,
   onChange,
   onLine
 }: Props) => {
@@ -73,6 +75,7 @@ const CalendarNavigator = ({
               selected={moment(selectedDate)}
               minDate={moment(limitedDays.first)}
               maxDate={moment(maxDate)}
+              onClickOutside={onClickOutside}
               onChange={onChange}
             >
               <div className={cx('limited-days')}>

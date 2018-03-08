@@ -47,6 +47,11 @@ class CalendarNavigatorContainer extends Component<Props> {
     }
   }
 
+  handleClickOutside = (e) => {
+    e && e.preventDefault();
+    HomeActions.hideCalendar();
+  }
+
   handleChange = (date) => {
     this.getAPOD(date.format('YYYY-MM-DD'));
     this.handleCalendarToggle();
@@ -54,7 +59,7 @@ class CalendarNavigatorContainer extends Component<Props> {
 
   render() {
     const { isLoaded, apod, today, calendar, onLine } = this.props;
-    const { handlePrev, handleNext, handleCalendarToggle, handleChange } = this;
+    const { handlePrev, handleNext, handleCalendarToggle, handleClickOutside, handleChange } = this;
 
     const isFirstDay = limitedDays.first === apod.date;
     const isLastDay = today === apod.date;
@@ -70,6 +75,7 @@ class CalendarNavigatorContainer extends Component<Props> {
         selectedDate={apod.date}
         calendar={calendar}
         onClick={handleCalendarToggle}
+        onClickOutside={handleClickOutside}
         onChange={handleChange}
         onLine={onLine}
       />
