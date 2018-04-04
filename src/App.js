@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { BaseActions, GalleryActions } from 'store/actionCreators';
+import { BaseActions, HomeActions, GalleryActions } from 'store/actionCreators';
 import { Home, Gallery } from 'pages';
 import AppShell from './AppShell';
 import 'semantic-ui-css/semantic.min.css';
@@ -31,6 +31,12 @@ class App extends Component {
     });
     window.addEventListener('online', () => {
       BaseActions.changeNetworkStatus(window.navigator.onLine);
+    });
+    window.addEventListener('keyup', (e) => {
+      if (e.keyCode === 27) { // 27 is ESC
+        BaseActions.closeAPODModal();
+        HomeActions.hideCalendar();
+      }
     });
   }
 
